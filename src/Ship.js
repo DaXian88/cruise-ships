@@ -1,8 +1,12 @@
-function Ship(startingPort) {
-    this.startingPort = startingPort;
-    this.setSail = function () {
-        this.startingPort = null;
+function Ship(port) {
+    this.port = port;
+    this.setSail = function() {
+        this.port = null;
     }
+    this.dock = function(port) {
+        this.port = port
+    }
+    
 };
 
 
