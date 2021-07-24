@@ -1,11 +1,18 @@
-function Ship(port) {
-    this.port = port;
-    this.setSail = function() {
-        this.port = null;
+class Ship {
+    constructor(itinerary) {
+        this.itinerary = itinerary;
+        this.currentPort = itinerary.ports[0];
+        this.previousPort = null;
     }
-    this.dock = function(port) {
-        this.port = port
-    }
+        setSail() {
+            this.previousPort = this.currentPort;
+            this.currentPort = null;
+        }
+        dock() {
+            const previousPortIndex = this.itinerary.ports.indexOf(this.previousPort)
+            this.currentPort = this.itinerary.ports[previousPortIndex + 1];
+        }
+
     
 };
 
