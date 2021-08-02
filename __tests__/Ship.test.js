@@ -11,7 +11,7 @@ describe('Ship', () => {
         let titanic;
 
         beforeEach(() => {
-            liverpool = new Port('Liverpool');
+            liverpool = { name: 'Port', removeShip: jest.fn(), addShip: jest.fn(), ships: [] };
             dublin = new Port('Dublin');
             itinerary = new Itinerary([liverpool, dublin]);
             titanic = new Ship(itinerary);
@@ -29,8 +29,8 @@ describe('Ship', () => {
         it('can set sail', () => {
         titanic.setSail();
 
-        expect(titanic.currentPort).toBeFalsy();
-        expect(liverpool.ships).not.toContain(titanic)
+        expect(liverpool.currentPort).toBeFalsy();
+        expect(liverpool.removeShip).toHaveBeenCalledWith(titanic);
         });
         
         it('docks at a different port', () => {
@@ -43,7 +43,7 @@ describe('Ship', () => {
         
         it('gets added to port on instantiation', () => {
 
-        expect(liverpool.ships).toContain(titanic);
+        expect(liverpool.addShip).toHaveBeenCalledWith(titanic);
         });
         
         it('can dock at a different port', () => {

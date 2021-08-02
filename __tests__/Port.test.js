@@ -36,10 +36,10 @@ describe('Port', () => {
 
     it('removes a ship from a port', () => {
         const liverpool = new Port('Liverpool');
-        const dublin = new Port('Dublin');
-        const itinerary = new Itinerary([liverpool, dublin]);
         const titanic = jest.fn();
-
+        
+        liverpool.addShip(titanic)
+        expect(liverpool.ships).toEqual([titanic])
         liverpool.removeShip(titanic);
         expect(liverpool.ships).toEqual([])
         });
