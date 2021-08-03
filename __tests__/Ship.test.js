@@ -11,9 +11,9 @@ describe('Ship', () => {
         let titanic;
 
         beforeEach(() => {
-            liverpool = { name: 'Port', removeShip: jest.fn(), addShip: jest.fn(), ships: [] };
+            liverpool = { name: 'Liverpool', removeShip: jest.fn(), addShip: jest.fn(), ships: [] };
             dublin = new Port('Dublin');
-            itinerary = new Itinerary([liverpool, dublin]);
+            itinerary = { ports: [liverpool, dublin] };
             titanic = new Ship(itinerary);
         }); 
         it('can be instantiated', () => {
